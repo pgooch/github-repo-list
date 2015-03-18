@@ -3,10 +3,10 @@
 Plugin Name: GitHub Reop List
 Plugin URI: http://fatfolderdesign.com/
 Description: Get a list of all your GitHub repositories in a post-friendly format with a simple and flexible shortcode. Shortcode deatils located in the "Help" menu on post pages.
-Version: 1.1.1
+Version: 1.2.1
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
-License: Undecided
+License:  http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 class github_repo_list {
@@ -186,7 +186,8 @@ class github_repo_list {
 						<td valign="top">A comma seperated list of repositories to be filtered out regardless of other settings, use the official GitHub name.</td>
 					</tr>
 				</table>
-				<p>In addition to these settings you can filter against any repository detail except owner. A full list of details can be viewed by accessing the the API feed from <a href="https://api.github.com/users/pgooch/repos" target="_blank">https://api.github.com/users/{{your_username_here}}/repos</a>. The only default repository attribute filter is <code>fork="false"</code>, this can be overridden by passing a blank to the fork attribute.
+				<p>In addition to these settings you can filter against any repository detail except owner. A full list of details can be viewed by accessing the the API feed from <a href="https://api.github.com/users/pgooch/repos" target="_blank">https://api.github.com/users/{{your_username_here}}/repos</a>. The only default repository attribute filter is <code>fork="false"</code>, this can be overridden by passing a blank to the fork attribute.<p>
+				<p>An example of a propert shortcode might look something like this: <code>[github-repo-list username="pgooch" title_wrapper="h4" ]</code>, which is very similar to the one I use on my site and pulls a list of all my repositories (except forks of other peoples) and wraps the title in an h4 tag instead of the default h2 tag.</p>
 				',
 			)
 		);
