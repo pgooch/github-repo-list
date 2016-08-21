@@ -2,8 +2,8 @@
 Contributors: Phillip.Gooch
 Tags: //!\\
 Requires at least: 3.4
-Tested up to: 4.3
-Stable tag: 1.2.1
+Tested up to: 4.6
+Stable tag: 1.2.2
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 1.2.2
+ + Fixed an issue that would make it unable to display a list if called from a non-secure site.
+ + Added a better error notification if it could not find a list of repose for the desired user.
 #### 1.2.1
  + Added an example shortcode to the help menu.
 #### 1.1.0

@@ -3,7 +3,7 @@
 Plugin Name: GitHub Reop List
 Plugin URI: http://fatfolderdesign.com/
 Description: Get a list of all your GitHub repositories in a post-friendly format with a simple and flexible shortcode. Shortcode deatils located in the "Help" menu on post pages.
-Version: 1.2.1
+Version: 1.2.2
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
 License:  http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,10 +63,17 @@ class github_repo_list {
 		curl_setopt_array($c,array(
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_USERAGENT      => 'github-repo-list wordpress plugin',
+			CURLOPT_SSL_VERIFYPEER => false,
+
 		));
 		$repos = curl_exec($c);
 		curl_close($c);
 		$repos = json_decode($repos,true);
+
+		// If we didn't get something back we expected lets toss out an error
+		if(!is_array($repos)){
+			return '<b>The github-repo-list shortcode encountered an error and was unable to get a list of repositories for "'.$username.'".</b>';
+		}
 
 		// lets confirm we actually got a list of repositories
 		if(isset($repos['message'])){
