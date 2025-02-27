@@ -1,13 +1,13 @@
-=== GitHub Reop List ===
+=== GitHub Repo List ===
 Contributors: Phillip.Gooch
 Tags: //!\\
 Requires at least: 3.4
-Tested up to: 4.6
-Stable tag: 1.2.2
+Tested up to: 6.7
+Stable tag: 1.2.3
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Get a list of all your GitHub repositories in a post-friendly format with a simple and flexible shortcode. Shortcode details located in the "Help" menu on post pages.
+Get a list of all your GitHub repositories in a post-friendly format with a simple and flexible shortcode.
 
 == Description ==
 
@@ -30,6 +30,10 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 1.2.3
+ + Updated for modern wordpress code standards.
+ + Created a dedicated help page since the old help dropdown is gone in Gutenberg. It can be viewed from a link on the plugin page.
+ + Added donation link and related errata.
 #### 1.2.2
  + Fixed an issue that would make it unable to display a list if called from a non-secure site.
  + Added a better error notification if it could not find a list of repose for the desired user.

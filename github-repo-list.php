@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: GitHub Reop List
+Plugin Name: GitHub Repo List
 Plugin URI: http://fatfolderdesign.com/
 Description: Get a list of all your GitHub repositories in a post-friendly format with a simple and flexible shortcode. Shortcode deatils located in the "Help" menu on post pages.
-Version: 1.2.2
+Version: 1.2.3
 Author: Phillip Gooch
-Author URI: mailto:phillip.gooch@gmail.com
-License:  http://www.gnu.org/licenses/gpl-2.0.html
+Author URI: https://pgooch.com
+License: GNU General Public License v2
 */
 
 class github_repo_list {
@@ -17,7 +17,24 @@ class github_repo_list {
 		// Add the help tab addition
 		add_action('load-post.php'		,array($this,'github_repo_list_help_tab'));
 		add_action('load-post-new.php'	,array($this,'github_repo_list_help_tab'));
+		// Add the help page
+		add_action('admin_menu',		array(&$this,'help'));
+		add_filter('plugin_action_links_'.plugin_basename(__FILE__), array(&$this,'plugin_page_help_link'));
 	}
+
+	public function help(){
+		// Lets add a new (sub) menu item;
+		add_submenu_page(null,'GitHub Repo List','GitHub Repo List','edit_theme_options','github-repo-list-help',array(&$this,'help_page'));
+	}
+	public function help_page(){
+		// Loads the other page, it's much simpler this way.
+		require_once('help.html');
+	}
+	public function plugin_page_help_link($links){
+		$links[] = '<a href="./themes.php?page=github-repo-list-help">Help</a>';
+		return $links;
+	}
+
 
 	public function github_repo_list_shortcode($attributes){
 
@@ -58,17 +75,20 @@ class github_repo_list {
 			return '<b>The github-repo-list shortcode requires a "username" attribute.</b>';
 		}
 
-		// Now lets load the users repository list
-		$c = curl_init('https://api.github.com/users/'.$username.'/repos');
-		curl_setopt_array($c,array(
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_USERAGENT      => 'github-repo-list wordpress plugin',
-			CURLOPT_SSL_VERIFYPEER => false,
+		// New WP approved method of getting the repository list
+		$repos = wp_remote_get('https://api.github.com/users/'.$username.'/repos');
+		$repos = json_decode($repos['body'],true);
 
-		));
-		$repos = curl_exec($c);
-		curl_close($c);
-		$repos = json_decode($repos,true);
+		// Now lets load the users repository list
+		// $c = curl_init('https://api.github.com/users/'.$username.'/repos');
+		// curl_setopt_array($c,array(
+		// 	CURLOPT_RETURNTRANSFER => true,
+		// 	CURLOPT_USERAGENT      => 'github-repo-list wordpress plugin',
+		// 	CURLOPT_SSL_VERIFYPEER => false,
+		// ));
+		// $repos = curl_exec($c);
+		// curl_close($c);
+		// $repos = json_decode($repos,true);
 
 		// If we didn't get something back we expected lets toss out an error
 		if(!is_array($repos)){

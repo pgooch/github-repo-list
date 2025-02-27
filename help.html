@@ -1,0 +1,111 @@
+<div id="icon-themes" class="icon32"><br></div><h2>GitHub Repo List Shortcode Help</h2>
+
+<p>The <code>[github-repo-list]</code> shortcode pulls a list of your repositories from GitHub and displays them in a page friendly manner. The shortcode supports the following attributes.</p>
+
+<table class="form-table">
+	<tbody>
+
+		<tr valign="top">
+			<th scope="row">username</th>
+			<td>
+                <p>
+                    <strong>Required</strong>
+                </p>
+				<p>
+                    Your github username, used to pull your repositories.
+				</p>
+                <p>
+                    <em>No default.</em>
+                </p>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<th scope="row">order</th>
+			<td>
+                <p>
+                    The repository detail to sort by (more details on repository detail below).
+				</p>
+                <p>
+                    <em>Default: name</em>
+                </p>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<th scope="row">title_wrapper</th>
+			<td>
+				<p>
+                    The tag that you want to wrap the repository titles with, just the tag, the rest of the formatting and classes are automatically added.
+				</p>
+                <p>
+                    <em>Default: h2</em>
+                </p>
+			</td>
+		</tr>
+
+
+		<tr valign="top">
+			<th scope="row">link_target</th>
+			<td>
+				<p>
+                    The target that will be given to the repository links.
+				</p>
+                <p>
+                    <em>Default: _blank</em>
+                </p>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<th scope="row">strip_name_dashes</th>
+			<td>
+				<p>
+                    Wether or not to string the dashes from repository names, can be either true or anything else for false.
+				</p>
+                <p>
+                    <em>Default: true</em>
+                </p>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<th scope="row">filtered_repos</th>
+			<td>
+				<p>
+                    A comma seperated list of repositories to be filtered out regardless of other settings, use the official GitHub name.
+				</p>
+                <p>
+                    <em>Default: <span style="opacity:.5">none</span></em>
+                </p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>In addition to these settings you can filter against any repository detail except owner. A full list of details can be viewed by accessing the the API feed from <a href="https://api.github.com/users/pgooch/repos" target="_blank">https://api.github.com/users/{{your_username_here}}/repos</a>. The only default repository attribute filter is <code>fork="false"</code>, this can be overridden by passing a blank to the fork attribute.<p>
+<p>An example of a propert shortcode might look something like this: <code>[github-repo-list username="pgooch" title_wrapper="h4" ]</code>, which is very similar to the one I use on my site and pulls a list of all my repositories (except forks of other peoples) and wraps the title in an h4 tag instead of the default h2 tag.</p>
+
+<br/><br/>
+<h2 class="title">Miscellaneous</h2>
+<table class="form-table">
+	<tr valign="top">
+		<th scope="row"><label for="nothing">Have a problem</label></th>
+		<td>
+			Having trouble getting the plug-in working? Expected results? Feel like direction your repentant rage at someone far far away? Just have a general usage question? You can try the <a href="http://wordpress.org/support/plugin/backdrop" target="_blank">plug-ins support form</a> or, if you want an answer from the source, feel free to email me at <a href="mailto:phillip.gooch@gmail.com" target="_blank">phillip.gooch@gmail.com</a>.
+		</td>
+	</tr>
+	<tr valign="top">
+		<th scope="row"><label for="nothing">Check out the code</label></th>
+		<td>
+			Want to see how it all works, you can check out the on the <a href="http://plugins.svn.wordpress.org/backdrop/trunk/" target="_blank">WordPress SVN</a> or, even better, <a href="https://github.com/pgooch/backdrop" target="_blank">fork it on GitHub</a>. Feel free to make changes and submit pull requests, good ideas will be added to the master branch.
+		</td>
+	</tr>
+	<tr valign="top">
+		<th scope="row">Donate</th>
+		<td>
+			Like the plug-in and want to support further development? Thanks, thats just awesome! 
+			Consider <a href="https://buymeacoffee.com/pgooch" target="_blank">buying me a coffee</a> to support further open source development or if you're looking to get some work done yourself <a href="mailto:phillip.gooch@gmail.com" target="_blank">get in touch</a> and we'll talk code.
+		</td>
+	</tr>
+</table>
